@@ -1,0 +1,45 @@
+@startuml
+class Ball
+{
+    Xposition: double
+    Yposition: double
+    Xspeed: double
+    Yspeed: double
+    Condition: bool
+}
+
+class Platform
+{
+    Xposition: double
+    Xspeed: double
+}
+
+class Brick
+{
+    Xposition: double
+    Yposition: double
+    Condition: bool 
+}
+
+class "Borders"
+{
+   Xposition: double
+   Yposition: double
+   Xsize: double
+   Ysize: double
+}
+
+class Pit
+{
+   Xposition: double
+   Yposition: double
+   Xsize: double
+   Ysize: double
+}
+
+Platform - Ball : start >
+Ball - Platform : rebound >
+Ball - Brick : rebound and break >
+Ball --> Pit : fail
+Ball --> Borders : rebound >
+@enduml
